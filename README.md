@@ -43,7 +43,7 @@ A built-in web dashboard (served directly from the ESP32) shows live current dra
 | Red, Green, Yellow LEDs | 5mm, any colour |
 | Active buzzer | 3.3V compatible |
 | Resistors | 3× 220Ω (LEDs), 2× 10kΩ (bias divider), 1× 33Ω 1% metal film (burden) |
-| Capacitors | 10µF electrolytic (bias filter), 100nF ceramic × 3 (decoupling) |
+| Capacitors *(optional)* | 10µF electrolytic (bias filter), 100nF ceramic × 3 (decoupling) — recommended for PCB builds |
 
 **NFC cards/fobs:** any MIFARE Classic or MIFARE Ultralight card works. The system reads the UID only.
 
@@ -127,10 +127,12 @@ When soldering the final board, the layout choices below eliminate the PN532 int
 
 2. **Star ground** — all GND traces meet at one point (the ESP32 GND pin), not daisy-chained.
 
-3. **Decoupling capacitors** — place within 2mm of each VCC pin:
+3. **Decoupling capacitors** *(optional but recommended)* — place within 2mm of each VCC pin if you have them:
    - PN532: 100nF ceramic + 10µF electrolytic
    - OLED: 100nF ceramic
    - ESP32 3.3V pin: 100nF ceramic
+   
+   The firmware's `Wire.end()` trick handles most interference without caps. They improve ADC stability on a soldered PCB but are not required for the system to work.
 
 4. **I2C pull-ups** — 4.7kΩ from SDA to 3.3V, 4.7kΩ from SCL to 3.3V. Check if your PN532 module already has them before adding more.
 
@@ -413,19 +415,3 @@ machine-guardian/
 └── README.md
 ```
 
----
-
-## Contributing
-
-Pull requests are welcome. For significant changes, open an issue first to discuss what you'd like to change.
-
-When submitting a PR:
-- Do not commit real WiFi credentials or Telegram tokens.
-- Test on physical hardware before submitting.
-- Keep comments in the developer style: short, perspective of the author, not tutorial explanations.
-
----
-
-## License
-
-MIT — see [LICENSE](LICENSE).

@@ -14,21 +14,28 @@
 | 10 | Resistor 10kΩ | 1/4W, ±1% | 2 | Bias voltage divider. Use 1% for stable midpoint |
 | 11 | Resistor 33Ω | 1/4W, ±1% **metal film** | 1 | Burden resistor — metal film is lower noise than carbon |
 | 12 | Resistor 4.7kΩ | 1/4W, ±5% | 2 | I2C pull-ups (if not on PN532 module) |
-| 13 | Capacitor 10µF | Electrolytic, 10V+ | 1 | Bias midpoint filter |
-| 14 | Capacitor 100nF | Ceramic, 0.1µF, 10V+ | 3 | Decoupling — one per module VCC pin |
-| 15 | NFC card or fob | MIFARE Classic or Ultralight | ≥1 | Any 13.56MHz ISO14443A card |
-| 16 | USB cable | Micro-USB or USB-C (match ESP32) | 1 | Power supply |
-| 17 | USB power supply | 5V, ≥1A | 1 | Phone charger works fine |
+| 13 | NFC card or fob | MIFARE Classic or Ultralight | ≥1 | Any 13.56MHz ISO14443A card |
+| 14 | USB cable | Micro-USB or USB-C (match ESP32) | 1 | Power supply |
+| 15 | USB power supply | 5V, ≥1A | 1 | Phone charger works fine |
+
+### Optional — decoupling capacitors
+
+Not required for basic operation. Recommended for soldered PCB builds to improve noise rejection and ADC stability. The firmware's `Wire.end()` trick handles interference without them on a breadboard.
+
+| # | Component | Specification | Qty | Notes |
+|---|---|---|---|---|
+| C1 | Capacitor 10µF | Electrolytic, 10V+ | 1 | Bias midpoint filter — reduces ADC flicker |
+| C2 | Capacitor 100nF | Ceramic, 0.1µF, 10V+ | 3 | Decoupling — one per module VCC pin (PN532, OLED, ESP32) |
 
 ## Optional — for PCB build
 
 | # | Component | Specification | Qty | Notes |
 |---|---|---|---|---|
-| 18 | 2.54mm pin headers | Male/female, through-hole | assorted | For module sockets |
-| 19 | 3.5mm screw terminal | 2-pin | 1 | For CT sensor connection |
-| 20 | NPN transistor | 2N2222 or BC547 | 1 | Only needed if buzzer draws >40mA |
-| 21 | Resistor 1kΩ | 1/4W | 1 | Transistor base resistor (if using transistor) |
-| 22 | Shielded 2-wire cable | Twisted pair, microphone cable | ~15cm | For CT sensor connection to PCB |
+| P1 | 2.54mm pin headers | Male/female, through-hole | assorted | For module sockets |
+| P2 | 3.5mm screw terminal | 2-pin | 1 | For CT sensor connection |
+| P3 | NPN transistor | 2N2222 or BC547 | 1 | Only needed if buzzer draws >40mA |
+| P4 | Resistor 1kΩ | 1/4W | 1 | Transistor base resistor (if using transistor) |
+| P5 | Shielded 2-wire cable | Twisted pair, microphone cable | ~15cm | For CT sensor connection to PCB |
 
 ## Sourcing notes
 
@@ -45,8 +52,10 @@
 | SCT-013 clamp | $5–10 |
 | PN532 module | $4–8 |
 | OLED display | $2–4 |
-| Passives + LEDs | $2–5 |
+| Passives + LEDs | $2–4 |
+| Capacitors (optional) | $1–2 |
 | NFC cards (5-pack) | $3–6 |
-| **Total** | **~$20–40 USD** |
+| **Total (without caps)** | **~$19–38 USD** |
+| **Total (with caps)** | **~$20–40 USD** |
 
 Prices vary by source and shipping. Buying from AliExpress is significantly cheaper but has longer delivery times.

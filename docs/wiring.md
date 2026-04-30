@@ -21,7 +21,7 @@
                      │
 CT OUT+ ────────── NODE ──── PIN 34
                      │
-                   10µF (to GND)
+                 10µF (optional, to GND — stabilises midpoint)
                      │
 CT OUT- ────────── GND
          │
@@ -123,15 +123,17 @@ Pour a copper fill on the bottom layer. Connect every GND pad through a via to t
 
 This alone removes most of the ADC noise.
 
-### Decoupling capacitors
+### Decoupling capacitors (recommended, not required)
 
-Place within 2mm of each module's VCC pin:
+Place within 2mm of each module's VCC pin if available. The firmware's `Wire.end()` trick already handles most interference on a breadboard, but caps improve stability on a soldered PCB.
 
 | Module | Caps |
 |---|---|
 | PN532 | 100nF ceramic + 10µF electrolytic |
 | OLED | 100nF ceramic |
 | ESP32 3.3V pin | 100nF ceramic |
+
+If you don't have caps, the system will still work — ambient calibration will compensate for any remaining noise.
 
 ### CT cable
 
