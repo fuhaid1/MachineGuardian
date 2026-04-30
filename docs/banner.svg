@@ -1,0 +1,284 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <defs>
+
+    <!-- Deep dark background gradient -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#050709"/>
+      <stop offset="100%" stop-color="#0c1018"/>
+    </linearGradient>
+
+    <!-- Accent glow for the shield -->
+    <radialGradient id="shieldGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#6366f1" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Green pulse glow -->
+    <radialGradient id="greenGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#22c55e" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Horizontal scan-line texture -->
+    <pattern id="scanlines" x="0" y="0" width="1" height="4" patternUnits="userSpaceOnUse">
+      <rect width="1280" height="1" y="0" fill="white" fill-opacity="0.018"/>
+    </pattern>
+
+    <!-- Fine dot grid -->
+    <pattern id="dotgrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="0"  cy="0"  r="0.8" fill="#ffffff" fill-opacity="0.06"/>
+      <circle cx="40" cy="0"  r="0.8" fill="#ffffff" fill-opacity="0.06"/>
+      <circle cx="0"  cy="40" r="0.8" fill="#ffffff" fill-opacity="0.06"/>
+      <circle cx="40" cy="40" r="0.8" fill="#ffffff" fill-opacity="0.06"/>
+    </pattern>
+
+    <!-- Clip path for shield body -->
+    <clipPath id="shieldClip">
+      <path d="M640 260 L740 305 L740 395 Q740 430 640 460 Q540 430 540 395 L540 305 Z"/>
+    </clipPath>
+
+    <!-- Inner power chart stroke gradient -->
+    <linearGradient id="chartGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#3b82f6" stop-opacity="0.3"/>
+      <stop offset="40%"  stop-color="#3b82f6" stop-opacity="0.9"/>
+      <stop offset="70%"  stop-color="#22c55e" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0.3"/>
+    </linearGradient>
+
+    <!-- Filter: glow -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Filter: strong glow for accent elements -->
+    <filter id="strongGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Filter: soft shadow text -->
+    <filter id="textShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="8" flood-color="#6366f1" flood-opacity="0.6"/>
+    </filter>
+
+    <!-- Left panel card gradient -->
+    <linearGradient id="cardBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#111318" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0d0f14" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <!-- Right panel card gradient -->
+    <linearGradient id="cardBg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#0e1015" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#111318" stop-opacity="0.9"/>
+    </linearGradient>
+
+  </defs>
+
+  <!-- ── Background ── -->
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect width="1280" height="640" fill="url(#dotgrid)"/>
+  <rect width="1280" height="640" fill="url(#scanlines)"/>
+
+  <!-- Diagonal divider lines (subtle) -->
+  <line x1="0" y1="640" x2="460" y2="0"  stroke="#1e222b" stroke-width="1" opacity="0.6"/>
+  <line x1="820" y1="0" x2="1280" y2="640" stroke="#1e222b" stroke-width="1" opacity="0.6"/>
+
+  <!-- Centre glow blob behind shield -->
+  <ellipse cx="640" cy="360" rx="260" ry="220" fill="url(#shieldGlow)"/>
+
+  <!-- ── LEFT PANEL — stat cards ── -->
+  <!-- Card 1: Current -->
+  <rect x="60" y="90" width="210" height="88" rx="10" fill="url(#cardBg)" stroke="#1e222b" stroke-width="1"/>
+  <rect x="60" y="90" width="210" height="2"  rx="1"  fill="#22c55e"/>
+  <text x="76" y="117" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="2" fill="#64748b">CURRENT DRAW</text>
+  <text x="76" y="148" font-family="'JetBrains Mono', monospace" font-size="28" font-weight="700" fill="#22c55e" filter="url(#glow)">3.82A</text>
+  <text x="76" y="168" font-family="'JetBrains Mono', monospace" font-size="11" fill="#64748b">840 W</text>
+
+  <!-- Card 2: Session -->
+  <rect x="60" y="196" width="210" height="88" rx="10" fill="url(#cardBg)" stroke="#1e222b" stroke-width="1"/>
+  <rect x="60" y="196" width="210" height="2"  rx="1"  fill="#3b82f6"/>
+  <text x="76" y="223" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="2" fill="#64748b">SESSION RUNTIME</text>
+  <text x="76" y="254" font-family="'JetBrains Mono', monospace" font-size="28" font-weight="700" fill="#3b82f6" filter="url(#glow)">02:41</text>
+  <text x="76" y="274" font-family="'JetBrains Mono', monospace" font-size="11" fill="#64748b">Ahmed Al-Rashid</text>
+
+  <!-- Card 3: Today runtime -->
+  <rect x="60" y="302" width="210" height="88" rx="10" fill="url(#cardBg)" stroke="#1e222b" stroke-width="1"/>
+  <rect x="60" y="302" width="210" height="2"  rx="1"  fill="#eab308"/>
+  <text x="76" y="329" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="2" fill="#64748b">TODAY'S RUNTIME</text>
+  <text x="76" y="360" font-family="'JetBrains Mono', monospace" font-size="28" font-weight="700" fill="#eab308" filter="url(#glow)">6h 14m</text>
+  <text x="76" y="380" font-family="'JetBrains Mono', monospace" font-size="11" fill="#64748b">All operators</text>
+
+  <!-- Card 4: Alerts -->
+  <rect x="60" y="408" width="210" height="88" rx="10" fill="url(#cardBg)" stroke="#1e222b" stroke-width="1"/>
+  <rect x="60" y="408" width="210" height="2"  rx="1"  fill="#ef4444"/>
+  <text x="76" y="435" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="2" fill="#64748b">ALERTS TODAY</text>
+  <text x="76" y="466" font-family="'JetBrains Mono', monospace" font-size="28" font-weight="700" fill="#ef4444" filter="url(#glow)">0</text>
+  <text x="76" y="486" font-family="'JetBrains Mono', monospace" font-size="11" fill="#64748b">Unauthorized events</text>
+
+  <!-- ── CENTRE — shield + title ── -->
+
+  <!-- Shield body (outer) -->
+  <path d="M640 248 L760 300 L760 400 Q760 448 640 480 Q520 448 520 400 L520 300 Z"
+        fill="none" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Shield body (inner fill) -->
+  <path d="M640 260 L748 310 L748 398 Q748 440 640 468 Q532 440 532 398 L532 310 Z"
+        fill="#0a0c10" fill-opacity="0.85" stroke="#6366f1" stroke-width="1" opacity="0.6"/>
+
+  <!-- Shield inner glow fill -->
+  <path d="M640 260 L748 310 L748 398 Q748 440 640 468 Q532 440 532 398 L532 310 Z"
+        fill="url(#shieldGlow)" opacity="0.6"/>
+
+  <!-- NFC wave arcs inside shield -->
+  <g filter="url(#glow)" opacity="0.7">
+    <arc/>
+    <path d="M610 390 Q640 370 670 390" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round"/>
+    <path d="M595 375 Q640 348 685 375" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M580 360 Q640 326 700 360" fill="none" stroke="#6366f1" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <!-- NFC card icon inside shield -->
+  <rect x="615" y="395" width="50" height="32" rx="4" fill="none" stroke="#6366f1" stroke-width="1.5" opacity="0.8"/>
+  <line x1="615" y1="405" x2="665" y2="405" stroke="#6366f1" stroke-width="1" opacity="0.5"/>
+  <rect x="621" y="411" width="14" height="10" rx="2" fill="#6366f1" fill-opacity="0.4"/>
+
+  <!-- Green "active" dot on shield -->
+  <circle cx="640" cy="280" r="5" fill="#22c55e" filter="url(#strongGlow)"/>
+  <circle cx="640" cy="280" r="3" fill="#22c55e"/>
+
+  <!-- Shield corner decorators -->
+  <line x1="520" y1="300" x2="520" y2="280" stroke="#6366f1" stroke-width="1.5" opacity="0.3"/>
+  <line x1="520" y1="280" x2="540" y2="280" stroke="#6366f1" stroke-width="1.5" opacity="0.3"/>
+  <line x1="760" y1="300" x2="760" y2="280" stroke="#6366f1" stroke-width="1.5" opacity="0.3"/>
+  <line x1="760" y1="280" x2="740" y2="280" stroke="#6366f1" stroke-width="1.5" opacity="0.3"/>
+
+  <!-- ── TITLE TEXT ── -->
+  <text x="640" y="178"
+        font-family="'Syne', 'DM Sans', sans-serif"
+        font-size="52" font-weight="800"
+        text-anchor="middle" letter-spacing="-1.5"
+        fill="#e2e8f0"
+        filter="url(#textShadow)">Machine<tspan fill="#6366f1">Guardian</tspan></text>
+
+  <!-- Tagline -->
+  <text x="640" y="212"
+        font-family="'JetBrains Mono', monospace"
+        font-size="13" font-weight="400"
+        text-anchor="middle" letter-spacing="3"
+        fill="#64748b">NON-INTRUSIVE · NFC AUTH · ESP32 · LIVE DASHBOARD</text>
+
+  <!-- Divider line under title -->
+  <line x1="520" y1="225" x2="640" y2="225" stroke="url(#chartGrad)" stroke-width="0.75" opacity="0.6"/>
+  <line x1="640" y1="225" x2="760" y2="225" stroke="url(#chartGrad)" stroke-width="0.75" opacity="0.6"/>
+
+  <!-- ── RIGHT PANEL — power chart card ── -->
+  <rect x="1010" y="90" width="210" height="406" rx="10" fill="url(#cardBg2)" stroke="#1e222b" stroke-width="1"/>
+  <rect x="1010" y="90" width="210" height="2" rx="1" fill="#3b82f6"/>
+
+  <!-- Chart title -->
+  <text x="1026" y="116" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" letter-spacing="1.5" fill="#64748b">POWER DRAW — LAST 24H</text>
+
+  <!-- Chart area background -->
+  <rect x="1022" y="124" width="186" height="190" rx="4" fill="#080a0e" fill-opacity="0.6"/>
+
+  <!-- Grid lines -->
+  <line x1="1022" y1="161" x2="1208" y2="161" stroke="#1e222b" stroke-width="0.75"/>
+  <line x1="1022" y1="195" x2="1208" y2="195" stroke="#1e222b" stroke-width="0.75"/>
+  <line x1="1022" y1="229" x2="1208" y2="229" stroke="#1e222b" stroke-width="0.75"/>
+  <line x1="1022" y1="263" x2="1208" y2="263" stroke="#1e222b" stroke-width="0.75"/>
+  <line x1="1022" y1="297" x2="1208" y2="297" stroke="#1e222b" stroke-width="0.75"/>
+
+  <!-- Ambient dashed line -->
+  <line x1="1022" y1="245" x2="1208" y2="245" stroke="#eab308" stroke-width="1" stroke-dasharray="5 3" opacity="0.6"/>
+  <text x="1213" y="248" font-family="'JetBrains Mono', monospace" font-size="7" fill="#eab308" opacity="0.8">AMB</text>
+
+  <!-- Threshold dashed line -->
+  <line x1="1022" y1="220" x2="1208" y2="220" stroke="#ef4444" stroke-width="1" stroke-dasharray="5 3" opacity="0.6"/>
+  <text x="1213" y="224" font-family="'JetBrains Mono', monospace" font-size="7" fill="#ef4444" opacity="0.8">THR</text>
+
+  <!-- Power chart fill area -->
+  <path d="M1022 290
+           L1040 275 L1055 268 L1065 272 L1075 260 L1085 255
+           L1095 248 L1102 240 L1110 230 L1118 218 L1126 208
+           L1134 212 L1140 205 L1148 198 L1156 195 L1163 199
+           L1170 192 L1178 186 L1186 190 L1194 182 L1200 178
+           L1208 180
+           L1208 314 L1022 314 Z"
+        fill="url(#chartGrad)" fill-opacity="0.12"/>
+
+  <!-- Power chart line (raw amps) -->
+  <path d="M1022 290
+           L1040 275 L1055 268 L1065 272 L1075 260 L1085 255
+           L1095 248 L1102 240 L1110 230 L1118 218 L1126 208
+           L1134 212 L1140 205 L1148 198 L1156 195 L1163 199
+           L1170 192 L1178 186 L1186 190 L1194 182 L1200 178
+           L1208 180"
+        fill="none" stroke="url(#chartGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        filter="url(#glow)"/>
+
+  <!-- NOW divider vertical line -->
+  <line x1="1148" y1="124" x2="1148" y2="314" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="1150" y="136" font-family="'JetBrains Mono', monospace" font-size="7" fill="#ffffff" fill-opacity="0.5">▶ NOW</text>
+
+  <!-- Runtime mini-chart (bars) -->
+  <text x="1026" y="342" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" letter-spacing="1.5" fill="#64748b">RUNTIME BY DAY</text>
+
+  <!-- Day labels -->
+  <text x="1040" y="490" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle" fill="#64748b">Mon</text>
+  <text x="1090" y="490" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle" fill="#64748b">Tue</text>
+  <text x="1140" y="490" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle" fill="#64748b">Wed</text>
+  <text x="1190" y="490" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle" fill="#64748b">Today</text>
+
+  <!-- Authorised bars (green) -->
+  <rect x="1020" y="420" width="30" height="62" rx="3" fill="#22c55e" fill-opacity="0.7"/>
+  <rect x="1070" y="400" width="30" height="82" rx="3" fill="#22c55e" fill-opacity="0.7"/>
+  <rect x="1120" y="410" width="30" height="72" rx="3" fill="#22c55e" fill-opacity="0.7"/>
+  <rect x="1170" y="458" width="30" height="24" rx="3" fill="#22c55e" fill-opacity="0.5"/>
+
+  <!-- Unauth sliver (red) on Tue -->
+  <rect x="1070" y="390" width="30" height="10" rx="3" fill="#ef4444" fill-opacity="0.8"/>
+
+  <!-- ── BOTTOM STATUS BAR ── -->
+  <rect x="60" y="540" width="1160" height="48" rx="8" fill="#0d0f14" fill-opacity="0.8" stroke="#1e222b" stroke-width="1"/>
+
+  <!-- Status dots + labels -->
+  <circle cx="100" cy="564" r="5" fill="#22c55e" filter="url(#strongGlow)"/>
+  <circle cx="100" cy="564" r="3" fill="#22c55e"/>
+  <text x="114" y="569" font-family="'JetBrains Mono', monospace" font-size="11" fill="#e2e8f0">Machine Running</text>
+
+  <line x1="280" y1="548" x2="280" y2="580" stroke="#1e222b" stroke-width="1"/>
+  <text x="296" y="569" font-family="'JetBrains Mono', monospace" font-size="11" fill="#64748b">Operator: <tspan fill="#e2e8f0">Ahmed Al-Rashid</tspan></text>
+
+  <line x1="560" y1="548" x2="560" y2="580" stroke="#1e222b" stroke-width="1"/>
+  <text x="576" y="569" font-family="'JetBrains Mono', monospace" font-size="11" fill="#64748b">WiFi: <tspan fill="#22c55e">Connected</tspan></text>
+
+  <line x1="740" y1="548" x2="740" y2="580" stroke="#1e222b" stroke-width="1"/>
+  <text x="756" y="569" font-family="'JetBrains Mono', monospace" font-size="11" fill="#64748b">Ambient: <tspan fill="#eab308">4.10A</tspan></text>
+
+  <line x1="920" y1="548" x2="920" y2="580" stroke="#1e222b" stroke-width="1"/>
+  <text x="936" y="569" font-family="'JetBrains Mono', monospace" font-size="11" fill="#64748b">Threshold: <tspan fill="#ef4444">1.00A</tspan></text>
+
+  <line x1="1100" y1="548" x2="1100" y2="580" stroke="#1e222b" stroke-width="1"/>
+  <text x="1116" y="569" font-family="'JetBrains Mono', monospace" font-size="11" fill="#64748b">ESP32 · 192.168.1.42</text>
+
+  <!-- ── CORNER DECORATORS ── -->
+  <!-- Top-left bracket -->
+  <path d="M30 20 L20 20 L20 30" fill="none" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
+  <!-- Top-right bracket -->
+  <path d="M1250 20 L1260 20 L1260 30" fill="none" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
+  <!-- Bottom-left bracket -->
+  <path d="M30 620 L20 620 L20 610" fill="none" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
+  <!-- Bottom-right bracket -->
+  <path d="M1250 620 L1260 620 L1260 610" fill="none" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Horizontal top accent lines -->
+  <line x1="300" y1="24" x2="500" y2="24" stroke="#6366f1" stroke-width="0.75" opacity="0.25"/>
+  <line x1="780" y1="24" x2="980" y2="24" stroke="#6366f1" stroke-width="0.75" opacity="0.25"/>
+
+  <!-- Version / build tag -->
+  <text x="640" y="26" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700"
+        text-anchor="middle" letter-spacing="3" fill="#6366f1" fill-opacity="0.5">ESP32 · NON-INTRUSIVE SECURITY</text>
+
+</svg>
