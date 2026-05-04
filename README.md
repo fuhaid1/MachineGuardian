@@ -3,7 +3,7 @@
 > Non-intrusive machine access control and energy monitoring for workshops and labs.
 > Built entirely on an ESP32 — no cloud required.
 
-![System Overview](docs/MachineGuardian Poster.pdf)
+![System Overview](docs/banner.svg)
 
 ## What it does
 
