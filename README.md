@@ -11,7 +11,7 @@ Machine Guardian clamps onto the power line of any machine and watches for curre
 
 A built-in web dashboard (served directly from the ESP32) shows live current draw, session history, employee usage, and unauthorized access events. All data can be downloaded as a multi-sheet Excel file.
 
-Showcase Video:https://youtu.be/7vlmYCS4dMw
+
 ---
 
 ## Feature overview
